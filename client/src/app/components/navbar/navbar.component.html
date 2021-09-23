@@ -1,1 +1,67 @@
-<p>navbar works!</p>
+<!--<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+  &lt;!&ndash;Login&ndash;&gt;
+    <a href="/">Login</a>
+
+    &lt;!&ndash; toggle navigation collapse &ndash;&gt;
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar = !toggleNavbar" data-toggle="collapse"
+            data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText" [ngbCollapse]="toggleNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item active ">
+          <h1 class="text-center">Tsenga.e</h1>
+        </li>
+      </ul>
+      &lt;!&ndash; buttons redirecting to contact form and CV download &ndash;&gt;
+      <span class="buttons justify-end">
+                <button type="button" class="btn btn-outline-primary">Cart</button>
+                <button type="button" class="btn btn-outline-primary m-2">Search</button>
+      </span>
+    </div>
+
+  </div>
+</nav>-->
+<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!--  Show this only on mobile to medium screens  -->
+    <a class="navbar-brand d-lg-none" href="#">Navbar</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!--  Use flexbox utility classes to change how the child elements are justified  -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+
+      <!--   Show this only lg screens and up   -->
+      <a class="navbar-brand d-none d-lg-block" href="#">Navbar</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
