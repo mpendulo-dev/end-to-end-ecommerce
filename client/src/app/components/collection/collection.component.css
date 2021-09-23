@@ -1,10 +1,8 @@
 .collection {
   height: 300px;
-  width: 100%;
   background: #FFFFFF;
 }
-@media (min-width: 0px) and (max-width: 480px) {
-  .row {
-
-  }
+.row {
+  margin: 0;
+  padding: 0;
 }
