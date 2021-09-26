@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+.store__name {
+  font-size: 30px;
+  font-family: 'Ephesis', cursive;
+}
+.ecommerce {
+  color: #F15025;
+}
+.btn-login {
+  color: white;
+  border-color: #F36942;
+  background: #F36942;
+  width: 95px;
+  /*font-weight: bold;*/
+
+}
+.btn-login:hover {
+  color: white;
+  background: #F15025;
+}
+.nav-link:hover {
+  color: #F15025;
+}
+.bi:hover {
+  color: #F15025;
+}
