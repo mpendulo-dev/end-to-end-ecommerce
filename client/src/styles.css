@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=BioRhyme&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'BioRhyme', serif;
+  font-family: 'JetBrains Mono', monospace;
 }
