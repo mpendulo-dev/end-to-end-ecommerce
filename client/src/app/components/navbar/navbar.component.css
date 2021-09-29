@@ -9,14 +9,13 @@
 }
 .btn-login {
   color: white;
-  border-color: #F36942;
+  border: 2px solid #F36942;
   background: #F36942;
   width: 95px;
   /*font-weight: bold;*/
 
 }
 .btn-login:hover {
-  color: white;
   background: #F15025;
 }
 .nav-link:hover {
@@ -25,3 +24,5 @@
 .bi:hover {
   color: #F15025;
 }
+
+
