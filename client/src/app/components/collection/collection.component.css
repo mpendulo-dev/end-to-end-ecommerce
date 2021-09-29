@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
 .collection {
   height: 300px;
   background: #FFFFFF;
@@ -5,4 +6,25 @@
 .row {
   margin: 0;
   padding: 0;
+}
+.btn {
+  background: #F69478;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+.btn:hover {
+  background: #F36942;
+}
+.btn-secondary {
+  color: white;
+  height: 40px;
+  width: 160px;
+  border-radius: 5px
+}
+.collection__header {
+  font-family: 'Ephesis', cursive;
+}
+.collec__part {
+  color: #F15025;
 }
