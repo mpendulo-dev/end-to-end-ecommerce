@@ -1,0 +1,37 @@
+.carousel-caption {
+  position: absolute;
+  z-index: 1;
+  display:table;
+  height:100%;
+}
+
+.absolute-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.carousel-caption p {
+  font-size: 50px;
+  font-weight: bold;
+  display:table-cell;
+  vertical-align: middle;
+  text-align:center;
+  justify-content: center;
+}
+
+.carousel-item {
+  position:relative;
+}
+.welcome {
+  color: #F36942;
+  font-weight: bolder;
+
+}
+@media (min-width: 319px) and (max-width:427px) {
+  .carousel-caption p {
+    font-size: 30px;
+  }
+}
