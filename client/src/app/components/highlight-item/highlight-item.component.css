@@ -1,5 +1,12 @@
 .highlight {
-  height: 500px;
+  height: 560px;
   width: 100%;
   background: #CED0CE;
+}
+.highlight__header {
+  font-family: 'Ephesis', cursive;
+  font-size: 50px;
+}
+.high__text {
+  color: #F15025;
 }

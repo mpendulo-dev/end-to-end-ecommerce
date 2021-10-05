@@ -25,3 +25,8 @@
 .collec__part {
   color: #F15025;
 }
+@media (min-width: 1025px) and (max-width: 1441px) {
+  .card {
+    width: 370px;
+  }
+}
