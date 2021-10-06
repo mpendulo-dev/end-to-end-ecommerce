@@ -25,8 +25,20 @@
 .collec__part {
   color: #F15025;
 }
+.card {
+  cursor: pointer;
+  
+  
+}
+.card:hover {
+  opacity: 0.8;
+}
+div.card.body {
+  height: 289px;
+}
 @media (min-width: 1025px) and (max-width: 1441px) {
   .card {
     width: 370px;
+    height: 539.45px;
   }
 }
