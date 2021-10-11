@@ -1,0 +1,14 @@
+.btn-send {
+    background: #F69478;
+    display: flex;
+    justify-content: center;
+    color: white;
+    border: 2px solid #F69478;
+    box-shadow: 0px 2px #F36942;
+    width: 160px;
+    height: 40px;
+    border-radius: 5px;
+}
+.btn-send:hover {
+    background: #F36942;
+}
