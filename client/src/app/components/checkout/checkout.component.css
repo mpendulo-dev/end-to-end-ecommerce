@@ -1,0 +1,31 @@
+.summary {
+  width: auto;
+  height: auto;
+}
+div.card.body {
+  height: 182px;
+}
+
+@media (min-width: 319px) and (max-width: 426px) {
+  img {
+    width: auto;
+    height: auto;
+  }
+  .remove {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (min-width: 481px) and (max-width: 2561px) {
+    .cart {
+      display: flex;
+      justify-content: center;
+    }
+  .summary {
+    width: 18rem;
+  }
+  .remove {
+    display: flex;
+    justify-content: end;
+  }
+}
