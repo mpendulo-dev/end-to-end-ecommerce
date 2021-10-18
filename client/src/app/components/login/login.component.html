@@ -10,7 +10,7 @@
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="email"
                         [formControl]="name">
-                        
+
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
@@ -19,6 +19,9 @@
                     <div class="col-md-12 d-flex justify-content-center">
                         <button type="submit" class="btn btn-send">Login</button>
                     </div>
+                  <div class="col-md-12 d-flex justify-content-end">
+                    <a routerLink="/registration"> Create account</a>
+                  </div>
                 </form>
             </div>
         </div>
