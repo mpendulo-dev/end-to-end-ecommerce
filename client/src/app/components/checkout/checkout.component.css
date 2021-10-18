@@ -23,9 +23,14 @@ div.card.body {
     }
   .summary {
     width: 18rem;
+    height: 200px;
   }
   .remove {
     display: flex;
-    justify-content: end;
+    justify-content: center;
+  }
+  .buy {
+    display: flex;
+    justify-content: center;
   }
 }
