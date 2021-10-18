@@ -12,6 +12,20 @@
 .btn-send:hover {
     background: #F36942;
 }
-.card {
+
+@media (min-width: 319px) and (max-width: 426px) {
+  .account {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+@media (min-width: 481px) and (max-width: 2561px) {
+.account {
+  display: flex;
+  justify-content: end;
+ }
+  .card {
     width: 40rem;
+  }
 }

@@ -5,7 +5,6 @@
 div.card.body {
   height: 182px;
 }
-
 @media (min-width: 319px) and (max-width: 426px) {
   img {
     width: auto;

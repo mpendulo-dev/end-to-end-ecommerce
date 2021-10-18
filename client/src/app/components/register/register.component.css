@@ -12,6 +12,9 @@
 .btn-send:hover {
   background: #F36942;
 }
-.card {
-  width: 50rem;
+
+@media (min-width: 481px) and (max-width: 2561px) {
+  .card {
+    width: 40rem;
+  }
 }
