@@ -55,6 +55,9 @@
             <label for="confirm-password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
             <input [class.is-invalid]="registrationForm.errors?.misMatch"
               formControlName="confirmPassword" type="password" class="form-control" id="confirm-password">
+            <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
+              <small *ngIf="confirmPassword.errors?.required" class="text-danger">Confirm password!</small>
+            </div>
             <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords do not match!</small>
           </div>
 

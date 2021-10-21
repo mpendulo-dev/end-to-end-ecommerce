@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup} from "@angular/forms";
 import { PasswordValidator } from '../../shared/password.validator';
+import {RegistrationService} from "../../service/registration.service";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
   // @ts-ignore
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private registrationService: RegistrationService) { }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
       lastName: ['',[Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required]],
       password: ['',[Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['']
+      confirmPassword: ['', [Validators.required]]
     },{validator: PasswordValidator});
   }
   /* Getter for form controls */
@@ -41,7 +42,14 @@ export class RegisterComponent implements OnInit {
 
   /* Registration submit method*/
   onSubmit() {
-    console.log(this.registrationForm.controls);
+    console.log(this.registrationForm.value);
+    this.registrationService.registerUser(this.registrationForm.value).subscribe(data => {
+      console.table(data)
+    },(error => {
+      console.log('Something went wrong!');
+      })
+
+    );
   }
 
 }
