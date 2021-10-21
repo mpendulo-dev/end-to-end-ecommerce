@@ -5,44 +5,61 @@
     <div class="card mt-5 mx-auto shadow p-3 mb-5 bg-body rounded mb-5">
       <div class="card-body">
         <h5 class="card-title text-center fs-1">Register</h5>
-        <form >
+
+        <!-- Registration form -->
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
           <!--First Name-->
-          <div class="mb-3">
-            <label for="firstname" class="form-label">First Name *</label>
-            <input type="text" class="form-control" id="firstname">
+          <div class="form-group mb-3">
+            <label class="form-label">First Name <span class="text-danger">*</span></label>
+            <input formControlName="firstName" type="text" class="form-control">
+            <!--First Name validation-->
+            <div *ngIf="firstName.invalid && firstName.touched">
+              <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+              <small *ngIf="lastName.errors?.minlength" class="text-danger">First Name should be at-least 2 characters</small>
+            </div>
           </div>
 
           <!--Last Name-->
-          <div class="mb-3">
-            <label for="lastname" class="form-label">Last Name *</label>
-            <input type="text" class="form-control" id="lastname">
+          <div class="form-group mb-3">
+            <label class="form-label">Last Name <span class="text-danger">*</span></label>
+            <input type="text" formControlName="lastName" class="form-control">
+            <!--Last Name validation-->
+            <div *ngIf="lastName.invalid && lastName.touched">
+              <small *ngIf="lastName.errors?.required" class="text-danger">Last Name is required</small>
+              <small *ngIf="lastName.errors?.minlength" class="text-danger">Last Name should be at-least 2 characters</small>
+            </div>
           </div>
 
           <!--Email-->
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address *</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-          <!--Email confirmation-->
-          <div class="mb-3">
-            <label for="confirm-email" class="form-label">Retype Email address *</label>
-            <input type="email" class="form-control" id="confirm-email">
+          <div class="form-group mb-3">
+            <label for="email" class="form-label">Email address <span class="text-danger">*</span></label>
+            <input formControlName="email" type="email" class="form-control" id="email">
+            <div *ngIf="email.invalid && email.touched">
+              <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+            </div>
           </div>
 
           <!--Password-->
           <div class="mb-3">
-            <label for="password" class="form-label">Password *</label>
-            <input type="password" class="form-control" id="password">
+            <label class="form-label">Password <span class="text-danger">*</span></label>
+            <input formControlName="password" type="password" class="form-control">
+            <div *ngIf="password.invalid && password.touched">
+              <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+              <small *ngIf="registrationForm.controls.password.errors?.minlength" class="text-danger">Password must be at least 6 characters</small>
+            </div>
+
           </div>
 
           <!--Password Confirmation-->
-          <div class="mb-3">
-            <label for="confirm-password" class="form-label">Retype Password *</label>
-            <input type="password" class="form-control" id="confirm-password">
+          <div class="form-group mb-3">
+            <label for="confirm-password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+            <input [class.is-invalid]="registrationForm.errors?.misMatch"
+              formControlName="confirmPassword" type="password" class="form-control" id="confirm-password">
+            <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords do not match!</small>
           </div>
 
           <div class="col-md-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-send">Register</button>
+            <button type="submit" class="btn btn-send" [disabled]="!registrationForm.valid">Register</button>
           </div>
         </form>
       </div>
