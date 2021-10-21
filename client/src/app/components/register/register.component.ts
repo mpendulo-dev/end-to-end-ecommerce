@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup} from "@angular/forms";
 import { PasswordValidator } from '../../shared/password.validator';
 import {RegistrationService} from "../../service/registration.service";
+import {Router} from "@angular/router";
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,7 +15,8 @@ export class RegisterComponent implements OnInit {
   // @ts-ignore
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private registrationService: RegistrationService) { }
+  constructor(private fb: FormBuilder, private registrationService: RegistrationService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -44,9 +48,14 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     console.log(this.registrationForm.value);
     this.registrationService.registerUser(this.registrationForm.value).subscribe(data => {
-      console.table(data)
+      console.log(data);
+
+      /* Navigate to login page once user is registered */
+      this.router.navigate(['/login']);
     },(error => {
-      console.log('Something went wrong!');
+      console.log('Something went wrong!', error);
+
+
       })
 
     );
