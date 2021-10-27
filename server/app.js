@@ -1,7 +1,7 @@
 const express =  require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const PORT = 3001;
+const PORT = process.env.PORT | 3000;
 
 const app = express();
 
@@ -17,3 +17,6 @@ app.post('/register', (req, res) => {
 app.listen(PORT, ()=> {
     console.log(`listening at port ${PORT}`);
 });
+
+/*
+ez82V17iB82mmaKt*/
