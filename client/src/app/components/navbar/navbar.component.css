@@ -8,19 +8,29 @@
 }
 .btn-login {
   color: white;
-  border: 2px solid #F36942;
-  background: #F36942;
+  border: 2px solid #f58f73;
+  background: #fc7e5b;
   width: 95px;
   /*font-weight: bold;*/
 
 }
+.btn-cart {
+  color: white;
+  border: 2px solid #f58f73;
+  background: #fc7e5b;
+  width: 95px;
+}
 .btn-login:hover {
-  background: #F15025;
+  background: #f16d49;
+  
+}
+.btn-cart:hover {
+  background: #f16d49;
 }
 .nav-link:hover {
   color: #F15025;
 }
-.bi:hover {
+/* .bi:hover {
   color: #F15025;
-}
+} */
 
