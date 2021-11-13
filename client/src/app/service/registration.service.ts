@@ -8,11 +8,11 @@ import {Registration} from "../models/registration.model";
 })
 export class RegistrationService {
 
-  REGISTRATION_URL = 'http://localhost:3000/users';
+  REGISTRATION_URL = 'http://localhost:3000/users/register';
   constructor(private http: HttpClient) { }
 
   registerUser(userData: Registration[]): Observable<Registration[]> {
-    return this.http.post<Registration[]>(`${this.REGISTRATION_URL}/register`, userData);
+    return this.http.post<Registration[]>(this.REGISTRATION_URL, userData);
   }
 
 }

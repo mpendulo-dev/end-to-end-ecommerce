@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="WS-212.5457.55">
+    <data-source name="tsenga@localhost" uuid="f3f45adb-5c99-4416-aa87-5d7552810998">
+      <database-info product="Mongo DB" version="" jdbc-version="4.2" driver-name="MongoDB JDBC Driver" driver-version="1.12" dbms="UNKNOWN" exact-version="0" />
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>session</secret-storage>
+      <user-name>mpendulo.dev@gmail.com</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node negative="1">
+            <node kind="database" qname="Mongo">
+              <node kind="schema" negative="1" />
+            </node>
+            <node kind="database" qname="">
+              <node kind="schema" qname="tsenga" />
+            </node>
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+  </component>
+</project>

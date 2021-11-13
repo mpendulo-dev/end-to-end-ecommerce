@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 
+/* Schema dictates how the data will be structured in the DB*/
 const UserSchema = new mongoose.Schema({
 
     firstName: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        lowercase: true
     },
     password: {
         type: String,
@@ -22,7 +22,8 @@ const UserSchema = new mongoose.Schema({
     },
     confirmPassword: {
         type: String,
-        required: true
+        required: true,
+        minlength: 6
     }
 });
 
