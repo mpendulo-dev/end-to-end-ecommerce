@@ -8,7 +8,7 @@
   justify-content: center;
   color: white;
   border: 2px solid #F69478;
-  box-shadow: 0px 2px #F36942;
+  box-shadow: 0 2px #F36942;
 }
 .btn:hover {
   background: #F36942;
@@ -40,14 +40,4 @@ div.card.body {
     height: 539.45px;
   }
 }
-@media (min-width: 481px) and (max-width: 769px) {
-  .card {
-    width: 200px;
-    height: 660px;
-  }
-  img.card-img-top {
-    width: 198px;
-    height: 198px;
-  }
 
-}
