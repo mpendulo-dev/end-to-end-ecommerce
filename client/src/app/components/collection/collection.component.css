@@ -27,8 +27,6 @@
 }
 .card {
   cursor: pointer;
-  
-  
 }
 .card:hover {
   opacity: 0.8;
@@ -38,7 +36,18 @@ div.card.body {
 }
 @media (min-width: 1025px) and (max-width: 1441px) {
   .card {
-    width: 370px;
+    width: 360px;
     height: 539.45px;
   }
+}
+@media (min-width: 481px) and (max-width: 769px) {
+  .card {
+    width: 200px;
+    height: 660px;
+  }
+  img.card-img-top {
+    width: 198px;
+    height: 198px;
+  }
+
 }

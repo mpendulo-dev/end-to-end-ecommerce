@@ -1,6 +1,3 @@
-
-@media (min-width: 319px) and (max-width:427px) {
-  .carousel-caption p {
-    font-size: 30px;
-  }
+img {
+  height: 70vh;
 }
