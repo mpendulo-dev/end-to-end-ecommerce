@@ -34,6 +34,8 @@ app.get('/', (req,res) => {
     res.send('Invalid endpoint');
 })
 
+
+/* Browser cookies */
 app.listen(PORT, ()=> {
     console.log(`listening at port ${PORT}`);
 });

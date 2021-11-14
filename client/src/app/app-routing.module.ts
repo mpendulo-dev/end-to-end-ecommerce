@@ -8,7 +8,7 @@ import {HighlightItemComponent} from "./components/highlight-item/highlight-item
 import {RegisterComponent} from "./components/register/register.component";
 
 const routes: Routes = [
-  {path: 'home', component: LoginComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegisterComponent},
   {path: 'collection', component: CollectionComponent},
