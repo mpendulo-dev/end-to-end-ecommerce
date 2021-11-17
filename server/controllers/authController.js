@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const CryptoJS = require('crypto-js');
+const jwt = require('jsonwebtoken');
 
 
 /* Handle errors */
@@ -15,10 +16,18 @@ const handleErrors = (err) => {
     if(err.message.includes('User validation failed')) {
         Object.values(err.errors).forEach(({properties}) => {
             errors[properties.path] = properties.message;
-        })
+        });
     }
 return errors;
 }
+
+/* create JWT-function */
+const maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+    return jwt.sign({id}, 'ewrtyuidsfghjwertyuidfgchjcvbn345678', {
+        expiresIn: maxAge
+    });
+};
 /* Registration user logic*/
 module.exports.register_get = (req, res) => {
 
@@ -37,7 +46,10 @@ module.exports.register_post = async (req, res) => {
 
     try {
         const savedUser = await newUser.save();
-        res.status(201).json(savedUser);
+        const token = createToken(savedUser._id);
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+        res.status(201).json({savedUser: savedUser._id});
+
         console.log('data saved');
 
     } catch (err) {

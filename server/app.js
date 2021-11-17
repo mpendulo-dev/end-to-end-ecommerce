@@ -5,6 +5,7 @@ const cors = require('cors');
 const PORT = process.env.PORT | 3000;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cookieParser = require("cookie-parser");
 
 const app = express();
 const users = require('./routes/users');
@@ -26,6 +27,9 @@ app.use(cors());
 /* Body Parser Middleware */
 app.use(express.json());
 
+/* Cookie parser middleware */
+app.use(cookieParser());
+
 
 app.use('/users', users);
 
@@ -34,8 +38,6 @@ app.get('/', (req,res) => {
     res.send('Invalid endpoint');
 })
 
-
-/* Browser cookies */
 app.listen(PORT, ()=> {
     console.log(`listening at port ${PORT}`);
 });
