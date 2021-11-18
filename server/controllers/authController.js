@@ -24,7 +24,7 @@ return errors;
 /* create JWT-function */
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
-    return jwt.sign({id}, 'ewrtyuidsfghjwertyuidfgchjcvbn345678', {
+    return jwt.sign({id}, process.env.JWT_ENC, {
         expiresIn: maxAge
     });
 };
@@ -39,8 +39,8 @@ module.exports.register_post = async (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         // Crypto-JS for encryption
-        password: CryptoJS.AES.encrypt(req.body.password,"randomieddsser").toString(),
-        confirmPassword: CryptoJS.AES.encrypt(req.body.confirmPassword,"randomieddsser").toString()
+        password: CryptoJS.AES.encrypt(req.body.password,process.env.PASS_SECRET).toString(),
+        confirmPassword: CryptoJS.AES.encrypt(req.body.confirmPassword,process.env.PASS_SECRET).toString()
 
     });
 

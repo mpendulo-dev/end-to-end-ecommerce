@@ -2,16 +2,16 @@ const express =  require('express');
 const path = require('path');
 const passport = require('passport');
 const cors = require('cors');
-const PORT = process.env.PORT | 3000;
+const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+require('dotenv').config();
 const cookieParser = require("cookie-parser");
 
 const app = express();
 const users = require('./routes/users');
 
 /* connect to database */
-mongoose.connect('mongodb://localhost:27017/tsenga', {useNewUrlParser: true}, {useUnifiedTopology: true});
+mongoose.connect(process.env.DB_URL, {useNewUrlParser: true}, {useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
 
 mongoose.connection.on('connected', ()=> {
