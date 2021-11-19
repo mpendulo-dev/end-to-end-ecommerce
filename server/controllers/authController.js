@@ -46,20 +46,70 @@ module.exports.register_post = async (req, res) => {
 
     try {
         const savedUser = await newUser.save();
-        const token = createToken(savedUser._id);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(201).json({savedUser: savedUser._id});
+        console.log(savedUser);
+        res.status(201).json(savedUser);
 
         console.log('data saved');
 
     } catch (err) {
         const errors = handleErrors(err);
-       res.status(400).json(errors);
+        res.status(400).json(errors);
     }
 }
 module.exports.login_get = (req, res) => {
 
 }
-module.exports.login_post = (req, res) => {
+module.exports.login_post = async (req, res) => {
 
+    try {
+        const user = await User.findOne({email: req.body.email});
+
+        if(!user) {
+            res.status(401).json('Wrong credentials');
+        
+        }
+
+        const hashedPassword = CryptoJS.AES.decrypt(user.password, process.env.PASS_SECRET);
+        const password_ = hashedPassword.toString(CryptoJS.enc.Utf8);
+
+        if(password_ !== req.body.password) {
+            res.status(401).json('Wrong password!');
+            
+        }
+        const accessToken = jwt.sign({
+            id:user._id, 
+            isAdmin: user.isAdmin
+        }, process.env.JWT_ENC,
+        {expiresIn: "3d"}
+        );
+
+        // never reveal password to user, even if it's hashed.
+        const { password,confirmPassword, ...others} = user._doc;
+        res.status(200).json({...others, accessToken});
+
+    
+
+    } catch(err) {
+
+        res.status(500).json(err);
+    
+
+    }
+
+}
+module.exports.updateUser = async (req, res) => {
+    if(req.body.password) {
+        req.body.password = CryptoJS.AES.encrypt(req.body.password,process.env.PASS_SECRET).toString();
+    }
+    try {
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, {
+            $set: req.body
+        }, 
+            {new: true}
+        );
+        res.status(200).json(updatedUser);
+
+    }catch(err) {
+        res.status(500).json(err);
+    }
 }

@@ -28,8 +28,16 @@ const UserSchema = new mongoose.Schema({
     confirmPassword: {
         type: String,
         required: [true, 'Please confirm password']
+    },
+    isAdmin:{
+        type: Boolean,
+        default: false
     }
-});
+},
+
+{timestamps: true}
+
+);
 
 
 module.exports = mongoose.model('User', UserSchema);

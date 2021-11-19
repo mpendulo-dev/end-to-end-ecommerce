@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-app.use('/users', users);
+app.use('/api/users', users);
 
 /* Index route */
 app.get('/', (req,res) => {
