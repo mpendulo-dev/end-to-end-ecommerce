@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup} from "@angular/forms";
 import { PasswordValidator } from '../../shared/password.validator';
-import {RegistrationService} from "../../service/registration.service";
+import {RegistrationService} from "../../service/registration/registration.service";
 import {Router} from "@angular/router";
 
 

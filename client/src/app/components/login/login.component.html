@@ -5,16 +5,24 @@
         <div class="card mt-5 mx-auto shadow p-3 mb-5 bg-body rounded">
             <div class="card-body">
                 <h5 class="card-title text-center fs-1">Login</h5>
-                <form >
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="email"
-                        [formControl]="name">
+                               formControlName="email">
+                      <div *ngIf="email.invalid && email.touched">
+                        <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+                      </div>
 
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password">
+                        <input type="password" class="form-control" id="password"
+                               formControlName="password">
+                      <div *ngIf="password.invalid && password.touched">
+                        <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+                        <small *ngIf="password.errors?.minlength" class="text-danger">Password must be at least 6 characters</small>
+                      </div>
                     </div>
                     <div class="col-md-12 d-flex justify-content-center">
                         <button type="submit" class="btn btn-send">Login</button>

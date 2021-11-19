@@ -21,17 +21,8 @@ const handleErrors = (err) => {
 return errors;
 }
 
-/* create JWT-function */
-const maxAge = 3 * 24 * 60 * 60;
-const createToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_ENC, {
-        expiresIn: maxAge
-    });
-};
 /* Registration user logic*/
-module.exports.register_get = (req, res) => {
 
-}
 module.exports.register_post = async (req, res) => {
 
     let newUser = new User({
@@ -56,9 +47,8 @@ module.exports.register_post = async (req, res) => {
         res.status(400).json(errors);
     }
 }
-module.exports.login_get = (req, res) => {
 
-}
+// user login logic
 module.exports.login_post = async (req, res) => {
 
     try {
@@ -97,6 +87,8 @@ module.exports.login_post = async (req, res) => {
     }
 
 }
+
+// Update user logic
 module.exports.updateUser = async (req, res) => {
     if(req.body.password) {
         req.body.password = CryptoJS.AES.encrypt(req.body.password,process.env.PASS_SECRET).toString();
@@ -108,6 +100,32 @@ module.exports.updateUser = async (req, res) => {
             {new: true}
         );
         res.status(200).json(updatedUser);
+
+    }catch(err) {
+        res.status(500).json(err);
+    }
+}
+
+// delete user logic 
+module.exports.deleteUser = async (req, res) => {
+
+    try {
+        await User.findByIdAndDelete(req.params.id);
+        res.status(200).json('User has been deleted');
+
+    }catch(err) {
+        res.status(500).json(err);
+    }
+}
+// Get user
+module.exports.getUser = async (req, res) => {
+
+    try {
+        const user = await User.findById(req.params.id);
+        // never reveal password to user, even if it's hashed.
+        const { password,confirmPassword, ...others} = user._doc;
+        res.status(200).json({...others});
+
 
     }catch(err) {
         res.status(500).json(err);
