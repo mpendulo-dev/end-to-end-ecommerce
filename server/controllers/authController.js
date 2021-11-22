@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const CryptoJS = require('crypto-js');
 const jwt = require('jsonwebtoken');
-
+const notifier = require('node-notifier');
 
 /* Handle errors */
 const handleErrors = (err) => {
@@ -10,12 +10,15 @@ const handleErrors = (err) => {
     /* Duplicate email error */
     if(err.code === 11000) {
         errors.email = 'Email is already registered';
+        notifier.notify('Email is already registered');
+
         return errors;
     }
     /* Validation errors*/
     if(err.message.includes('User validation failed')) {
         Object.values(err.errors).forEach(({properties}) => {
             errors[properties.path] = properties.message;
+            notifier.notify(properties.message);
         });
     }
 return errors;
@@ -45,6 +48,7 @@ module.exports.register_post = async (req, res) => {
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json(errors);
+        notifier.notify(err);
     }
 }
 
@@ -56,6 +60,10 @@ module.exports.login_post = async (req, res) => {
 
         if(!user) {
             res.status(401).json('Wrong credentials');
+            notifier.notify({
+                title: 'Error!',
+                message: 'Wrong credentials'
+            });
         
         }
 
@@ -64,6 +72,10 @@ module.exports.login_post = async (req, res) => {
 
         if(password_ !== req.body.password) {
             res.status(401).json('Wrong password!');
+            notifier.notify({
+                title: 'Error!',
+                message: 'Wrong password or email'
+            });
             
         }
         const accessToken = jwt.sign({
@@ -82,7 +94,8 @@ module.exports.login_post = async (req, res) => {
     } catch(err) {
 
         res.status(500).json(err);
-    
+
+        notifier.notify(err);
 
     }
 
@@ -103,6 +116,11 @@ module.exports.updateUser = async (req, res) => {
 
     }catch(err) {
         res.status(500).json(err);
+
+        notifier.notify({
+            title: 'Error!',
+            message: err
+        });
     }
 }
 
@@ -115,6 +133,11 @@ module.exports.deleteUser = async (req, res) => {
 
     }catch(err) {
         res.status(500).json(err);
+        console.log(err.toString());
+        notifier.notify({
+            title: 'Error!',
+            message: err
+        });
     }
 }
 // Get user
@@ -126,8 +149,12 @@ module.exports.getUser = async (req, res) => {
         const { password,confirmPassword, ...others} = user._doc;
         res.status(200).json({...others});
 
-
     }catch(err) {
         res.status(500).json(err);
+        console.log(err.toString());
+        notifier.notify({
+            title: 'Error!',
+            message: err
+        });
     }
 }

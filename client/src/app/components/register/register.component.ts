@@ -48,14 +48,15 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     console.log(this.registrationForm.value);
     this.registrationService.registerUser(this.registrationForm.value).subscribe(data => {
-      console.log(data);
+      /*console.log(data);*/
 
       /* Navigate to login page once user is registered */
-      this.router.navigate(['/login']);
+      if(data) {
+        this.router.navigate(['/login']);
+      }
+
     },(error => {
       console.log('Something went wrong!', error);
-
-
       })
 
     );
